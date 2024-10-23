@@ -1,0 +1,23 @@
+name: "Workshop Ci/CD"
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4.0.4
+
+      - name: Install dependencies
+        run: npm run setup
+
+      - name: Run Lin
+        run: npm run lint
+      
